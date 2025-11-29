@@ -1,0 +1,165 @@
+/* ==========================
+   GLOBAL STYLE
+========================== */
+:root {
+  --bg: #0e1320;
+  --nav: rgba(13,18,30,0.75);
+  --card: #141b2d;
+  --border: rgba(255,255,255,0.06);
+  --accent: #00d1ff;
+  --text: #eef4ff;
+  --muted: #97a3ba;
+
+  --radius: 14px;
+  --shadow: 0 4px 20px rgba(0,0,0,0.15);
+
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ==========================
+   NAVBAR
+========================== */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 12px 20px;
+  background: var(--nav);
+  backdrop-filter: blur(10px);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .brand {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+nav .links a {
+  margin-left: 18px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+nav .links a:hover {
+  color: var(--accent);
+}
+
+/* ==========================
+   PAGE CONTAINER
+========================== */
+.container {
+  max-width: 1050px;
+  padding: 20px;
+  margin: auto;
+}
+
+/* ==========================
+   CARDS
+========================== */
+.card {
+  background: var(--card);
+  padding: 18px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  margin-bottom: 18px;
+  box-shadow: var(--shadow);
+}
+
+/* ==========================
+   BUTTON
+========================== */
+.btn {
+  padding: 12px;
+  width: 100%;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 700;
+  color: #000;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  transform: scale(1.03);
+}
+
+/* ==========================
+   FOOTER
+========================== */
+footer {
+  text-align: center;
+  padding: 25px;
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 30px;
+  border-top: 1px solid var(--border);
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+@media(max-width: 600px) {
+  nav .links a {
+    margin-left: 12px;
+    font-size: 14px;
+  }
+}
+
+/* ===== NAVBAR ANIMATION ===== */
+
+nav {
+  animation: fadeDown 0.6s ease forwards;
+  transition: padding 0.25s ease, background 0.25s ease;
+}
+
+/* efek shrink ketika scroll */
+nav.shrink {
+  padding: 8px 20px;
+  background: rgba(10,15,25,0.92);
+}
+
+/* animasi fade + slide dari atas */
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animasi underline link */
+nav .links a {
+  position: relative;
+}
+
+nav .links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+
+nav .links a:hover::after {
+  width: 100%;
+}
